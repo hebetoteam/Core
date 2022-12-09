@@ -1,0 +1,48 @@
+﻿<div class="card">
+    <div class="card-header pt-5">
+        <h4 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold fs-5">Trade History</span>
+            <span class="text-gray-400 mt-1 fw-semibold fs-6">Bot Trade Profit</span>
+        </h4>
+        <div class="card-toolbar">
+            <div class="d-flex flex-stack flex-wrap gap-4">
+                <a href="/admin/investtrading/index" class="text-gray-600">View All</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                <thead>
+                    <tr class="fw-bolder text-muted">
+                        <th>Start Price</th>
+                        <th>Stop Price</th>
+                        <th>Type</th>
+                        <th>Margin</th>
+                        <th>Profit Amount</th>
+                        <th>Profit Percent</th>
+                        <th>Result</th>
+                        <th>Date Created</th>
+                    </tr>
+                </thead>
+                <tbody id="tbl-content"></tbody>
+            </table>
+        </div>
+        @await Component.InvokeAsync("AjaxPaging")
+    </div>
+
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td><span class="fw-bold text-dark d-block fs-7">{{StartPrice}} <span class="text-gray-700 fs-8">BTC/USD</span></span></td>
+        <td><span class="fw-bold text-dark d-block fs-7">{{StopPrice}} <span class="text-gray-700 fs-8">BTC/USD</span></span></td>
+        <td><span class="fw-bold {{TypeColor}} d-block fs-7">{{TypeName}}</span></td>
+        <td><span class="fw-bold text-dark d-block fs-7">{{Margin}}</span></td>
+        <td><span class="fw-bold text-dark d-block fs-7"><span class="text-gray-700 fs-8">$</span>{{ProfitAmount}}</span></td>
+        <td><span class="fw-bold text-dark d-block fs-7">{{ProfitPercent}}<span class="text-gray-700 fs-8">%</span></span></td>
+        <td><span class="fw-bold {{ResultColor}} d-block fs-7">{{Result}}</span></td>
+        <td><span class="fw-bold text-muted d-block fs-7">{{DateCreated}}</span></td>
+    </tr>
+</script>

@@ -1,0 +1,62 @@
+﻿@model HomeViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@section Styles{
+
+}
+
+@section Scripts{
+    <script src="~/admin-app/controllers/home/index.js"></script>
+    <script>
+        var homeObj = new HomeController();
+        homeObj.initialize();
+    </script>
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="tradingview-widget-container mb-5">
+                <div class="tradingview-widget-container__widget" id="ticker-tape">
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-4 mb-10 mb-xl-10">
+                    @await Html.PartialAsync("_ChartTokenPricePartial")
+                </div>
+                <div class="col-xl-8 mb-10 mb-xl-10">
+                    @await Html.PartialAsync("_AirdropPartial")
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-5 mb-10 mb-xl-10">
+                    @await Html.PartialAsync("_RoadmapPartial")
+                </div>
+                <div class="col-xl-7 mb-10 mb-xl-10">
+                    @await Html.PartialAsync("_TokenNomicsPartial")
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-6 mb-5 mb-xl-5">
+                    @await Html.PartialAsync("_TeamPartial")
+                </div>
+                <div class="col-xl-6 mb-5 mb-xl-5">
+                    @await Html.PartialAsync("_StakingLeaderBoardPartial")
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-5">
+                    @await Html.PartialAsync("_InvestProfitHistoryPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,493 @@
+﻿@using System.Globalization
+@section Scripts{
+    <script src="~/admin-app/controllers/report-leadership/index.js"></script>
+    <script>
+        var reportController = new ReportController();
+        reportController.initialize();
+    </script>
+}
+    @{
+    ViewBag.Title = "Leadership report";
+}
+    @section Styles{
+    <link href="~/admin-app/controllers/report-leadership/index.css" rel="stylesheet" />
+}
+
+
+    <div class="d-flex flex-column flex-column-fluid">
+
+        @await Html.PartialAsync("_ToolbarPartial")
+
+        <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+            <div id="kt_app_content_container" class="app-container container-xxl">
+                <div class="row gx-5 gx-xl-10">
+                    <div class="col-xl-12 mb-5 mb-xl-10">
+                        <div class="card">
+                            <div class="card-header pt-5">
+                                <div class="card-toolbar">
+                                    <div class="d-flex flex-stack flex-wrap gap-4">
+                                        <div class="d-flex align-items-center fw-bold">
+                                            <input type="text" id="txt-query" class="form-control form-control-white form-control-sm me-5" placeholder="Username">
+                                        </div>
+                                        <div class="d-flex align-items-center fw-bold">
+                                            <input type="text" id="FromDate" class="form-control form-control-white form-control-sm me-5" placeholder="From">
+                                        </div>
+                                        <div class="d-flex align-items-center fw-bold">
+                                            <input type="text" id="ToDate" class="form-control form-control-white form-control-sm me-5" placeholder="To">
+                                        </div>
+                                        <div class="d-flex align-items-center fw-bold">
+                                            <a id="btnSearch" class="btn btn-sm btn-icon btn-light btn-color-muted btn-active-success me-3">
+                                                <span class="svg-icon svg-icon-2 svg-icon-success">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z" fill="black"></path><path opacity="0.3" d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z" fill="black"></path></svg>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+
+
+                    <div attr-id="1-BNB" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-deposit-bnb">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">BNB</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Deposit BNB
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="2-BNB" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-withdraw-bnb">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">BNB</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Withdraw BNB
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="1-USDT" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-deposit-usdt">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">USDT</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Deposit USDT
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="2-USDT" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-withdraw-usdt">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">USDT</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Withdraw USDT
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+
+
+                    <div attr-id="1-MNI" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-deposit-mni">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">MNI</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Deposit MNI
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="2-MNI" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-withdraw-mni">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">MNI</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Withdraw MNI
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="1-MNO" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-deposit-mno">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">MNO</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Deposit MNO
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="2-MNO" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-withdraw-mno">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">MNO</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Withdraw MNO
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+
+
+                    <div attr-id="15-BNB" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-transfer-bnb">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">BNB</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Transfer BNB
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="23-BNB" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-received-transfer-bnb">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">BNB</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Received Transfer BNB
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="15-USDT" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-transfer-usdt">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">USDT</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Transfer USDT
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="23-USDT" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-received-transfer-usdt">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">USDT</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Received Transfer USDT
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+
+
+                    <div attr-id="15-MNO" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-transfer-mno">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">MNO</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Transfer MNO
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="23-MNO" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-received-transfer-mno">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">MNO</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Received Transfer MNO
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="15-MNI" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-transfer-mni">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">MNI</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Transfer MNI
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div attr-id="23-MNI" class="wallet-inout col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-received-transfer-mni">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">MNI</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Received Transfer MNI
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+
+
+                    <div class="exchange-inout col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-exchange">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">USD</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Exchange USD
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="saving-inout col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked lb-total-saving">0 </span>
+                                        <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">USD</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                        Total Saving USD
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+                    <ul class="nav nav-tabs nav-line-tabs nav-line-tabs-2x mb-5 fs-6">
+                        <li class="nav-item" >
+                            <a id="OpenProject" class="nav-link active" data-bs-toggle="tab" href="#kt_tab_pane_4">WALLET</a>
+                        </li>
+                        <li class="nav-item" >
+                            <a id="OpenProject2" class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_5">EXCHANGE</a>
+                        </li>
+                        <li class="nav-item" >
+                            <a id="OpenProject3" class="nav-link" data-bs-toggle="tab" href="#kt_tab_pane_6">SAVING</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="kt_tab_pane_4" role="tabpanel">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                        <thead>
+                                        <tr class="fw-bolder text-muted">
+                                            <th>Email</th>
+                                            <th>Amount</th>
+                                            <th>USD</th>
+                                            <th>Type</th>
+                                            <th>Created Date</th>
+                                            
+                                        </tr>
+                                        </thead>
+                                        <tbody id="tbl-1-content"></tbody>
+                                    </table>
+
+                                    @await Component.InvokeAsync("AjaxPagingCommission")
+                            </div>
+                        </div>
+                        </div>
+                            <div class="tab-pane fade" id="kt_tab_pane_5" role="tabpanel">
+                                
+                                <div class="card-body">
+                                    
+
+                                    <div class="table-responsive">
+                                        <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                        <thead>
+                                            <tr class="fw-bolder text-muted">
+                                                <th>Email</th>
+                                                <th >Amount</th>
+                                                <th>USD</th>
+                                                <th>Type</th>
+                                                <th>Created Date</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="tbl-2-content"></tbody>
+                                        </table>
+
+                                        @await Component.InvokeAsync("AjaxPagingLeaderSale")
+                                    </div>
+                                    </div>
+                                
+                        </div>
+                        <div class="tab-pane fade" id="kt_tab_pane_6" role="tabpanel">
+                            <div class="table-responsive">
+                                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                    <thead>
+                                    <tr class="fw-bolder text-muted">
+                                        <th>Email</th>
+                                        <th>Token Code</th>
+                                        <th>Amount</th>
+                                        <th>USD</th>
+                                        <th>Profit</th>
+                                        <th>Created Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="tbl-3-content"></tbody>
+                                </table>
+
+                                @await Component.InvokeAsync("AjaxPaging")
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+            </div>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script id="table-1-template" type="x-tmpl-mustache">
+        <tr class="{{bgName}}">
+                                 <td>{{Email}}</td>
+                                 <td>{{Amount}} {{Unit}}</td>
+                                <td>{{AmountUSDT}}</td>
+                                <td>{{Type}}</td>
+                                <td>{{CreatedOn}}</td>
+                             </tr>
+</script>
+
+<script id="table-2-template" type="x-tmpl-mustache">
+        <tr class="{{bgName}}">
+                                 <td>{{Email}}</td>
+                                 <td>{{Amount}} {{Unit}}</td>
+                                <td>{{AmountUSDT}} </td>
+                                <td>{{TypeName}}</td>
+                                <td>{{CreatedOn}}</td>
+                             </tr>
+</script>
+
+<script id="table-3-template" type="x-tmpl-mustache">
+        <tr class="{{bgName}}">
+                               <td>{{Email}}</td>
+        <td>{{TokenCode}}</td>
+        <td>{{SavingAmount}}</td>
+        <td>{{SavingAmountUSD}} USD</td>
+        <td>{{ProfitAmount}}</td>
+        <td>{{CreatedOn}}</td>
+                         </tr>
+</script>

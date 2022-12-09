@@ -1,0 +1,466 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>aspnet-Core.Web-A8CA69FF-42F0-4734-8E5E-1AE5F2224FF3</UserSecretsId>
+    <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Views\Home\Partials\**" />
+    <Compile Remove="wwwroot\admin-side\css-spinner-master\**" />
+    <Compile Remove="wwwroot\admin-side\metronic\**" />
+    <Compile Remove="wwwroot\client-side\metadefi\**" />
+    <Compile Remove="wwwroot\client-side\metafish\**" />
+    <Compile Remove="wwwroot\icons\**" />
+    <Content Remove="Areas\Admin\Views\Home\Partials\**" />
+    <Content Remove="wwwroot\admin-side\css-spinner-master\**" />
+    <Content Remove="wwwroot\admin-side\metronic\**" />
+    <Content Remove="wwwroot\client-side\metadefi\**" />
+    <Content Remove="wwwroot\client-side\metafish\**" />
+    <Content Remove="wwwroot\icons\**" />
+    <EmbeddedResource Remove="Areas\Admin\Views\Home\Partials\**" />
+    <EmbeddedResource Remove="wwwroot\admin-side\css-spinner-master\**" />
+    <EmbeddedResource Remove="wwwroot\admin-side\metronic\**" />
+    <EmbeddedResource Remove="wwwroot\client-side\metadefi\**" />
+    <EmbeddedResource Remove="wwwroot\client-side\metafish\**" />
+    <EmbeddedResource Remove="wwwroot\icons\**" />
+    <None Remove="Areas\Admin\Views\Home\Partials\**" />
+    <None Remove="wwwroot\admin-side\css-spinner-master\**" />
+    <None Remove="wwwroot\admin-side\metronic\**" />
+    <None Remove="wwwroot\client-side\metadefi\**" />
+    <None Remove="wwwroot\client-side\metafish\**" />
+    <None Remove="wwwroot\icons\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Admin\Views\Shared\Components\AjaxPagingLeaderSale\Default.cshtml" />
+    <Content Remove="wwwroot\admin-app\controllers\airdrop-manage\index.js" />
+    <Content Remove="wwwroot\admin-app\controllers\exchange\index.js" />
+    <Content Remove="wwwroot\admin-app\controllers\shop-item\index.js" />
+    <Content Remove="wwwroot\admin-app\controllers\machine-item\index.js" />
+    <Content Remove="wwwroot\admin-app\controllers\staking\affiliate.js" />
+    <Content Remove="wwwroot\admin-app\controllers\staking\leaderboard.js" />
+    <Content Remove="wwwroot\admin-app\controllers\staking\profit.js" />
+    <Content Remove="wwwroot\admin-app\controllers\swap\index.js" />
+    <Content Remove="wwwroot\admin-app\controllers\airdrop\index.js" />
+    <Content Remove="wwwroot\admin-app\controllers\transfer\index.js" />
+    <Content Remove="wwwroot\client-app\controllers\exchange\block.js" />
+    <Content Remove="wwwroot\client-app\controllers\exchange\index.js" />
+    <Content Remove="wwwroot\client-app\controllers\swap\index.js" />
+    <Content Remove="wwwroot\client-app\controllers\transfer\index.js" />
+    <Content Remove="wwwroot\client-side\earntoken\assets\js\amcharts\animated.js" />
+    <Content Remove="wwwroot\client-side\earntoken\assets\js\amcharts\charts.js" />
+    <Content Remove="wwwroot\client-side\earntoken\assets\js\amcharts\core.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\EmailTemplate\sendmail.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\EmailTemplate\sendmail.html">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="5.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="5.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.Json" Version="5.0.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" PrivateAssets="All" />
+    <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.2" />
+    <PackageReference Include="Rick.Docs.Samples.RouteInfo" Version="1.0.0.4" />
+    <PackageReference Include="SkiaSharp" Version="2.88.1" />
+    <PackageReference Include="WebMarkupMin.AspNetCore5" Version="2.12.0" />
+    <PackageReference Include="WebMarkupMin.NUglify" Version="2.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+    <Folder Include="Models\Reponses\" />
+    <Folder Include="wwwroot\video\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\Feedback\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Feedback\_AddEditModal.cshtml" />
+    <None Include="Areas\Admin\Views\InvestTradingConfig\Index.cshtml" />
+    <None Include="Areas\Admin\Views\InvestTradingConfig\_AddEditConfigsModal.cshtml" />
+    <None Include="Areas\Admin\Views\InvestTrading\Index.cshtml" />
+    <None Include="Areas\Admin\Views\Profile\Partial\_ActivateReferralModal.cshtml" />
+    <None Include="Areas\Admin\Views\Profile\Partial\_ResetPasswordModal.cshtml" />
+    <None Include="Areas\Admin\Views\Profile\Partial\_TwoFactorModal.cshtml" />
+    <None Include="Areas\Admin\Views\Shared\Components\AjaxPagingLeaderSale\Default.cshtml" />
+    <None Include="Areas\Admin\Views\Staking\Index.cshtml" />
+    <None Include="Views\Shared\Components\AjaxPaging\Default.cshtml" />
+    <None Include="wwwroot\admin-app\controllers\airdrop-manage\index.js" />
+    <None Include="wwwroot\admin-app\controllers\cup-item\index.js" />
+    <None Include="wwwroot\admin-app\controllers\exchange\index.js" />
+    <None Include="wwwroot\admin-app\controllers\fundinginfo\FundingInfo.js" />
+    <None Include="wwwroot\admin-app\controllers\investtradingconfig\index.js" />
+    <None Include="wwwroot\admin-app\controllers\investtrading\index.js" />
+    <None Include="wwwroot\admin-app\controllers\shop-item\index.js" />
+    <None Include="wwwroot\admin-app\controllers\machine-item\index.js" />
+    <None Include="wwwroot\admin-app\controllers\staking-affiliate-transaction\index.js" />
+    <None Include="wwwroot\admin-app\controllers\staking-commission-transaction\index.js" />
+    <None Include="wwwroot\admin-app\controllers\staking-package-transaction\index.js" />
+    <None Include="wwwroot\admin-app\controllers\staking\leaderboard.js" />
+    <None Include="wwwroot\admin-app\controllers\staking\index.js" />
+    <None Include="wwwroot\admin-app\controllers\staking\affiliate.js" />
+    <None Include="wwwroot\admin-app\controllers\staking\profit.js" />
+    <None Include="wwwroot\admin-app\controllers\staking\history.js" />
+    <None Include="wwwroot\admin-app\controllers\swap\index.js" />
+    <None Include="wwwroot\admin-app\controllers\airdrop\index.js" />
+    <None Include="wwwroot\admin-app\controllers\transfer\index.js" />
+    <None Include="wwwroot\client-app\controllers\exchange\block.js" />
+    <None Include="wwwroot\client-app\controllers\exchange\index.js" />
+    <None Include="wwwroot\client-app\controllers\swap\index.js" />
+    <None Include="wwwroot\client-app\controllers\transfer\index.js" />
+    <None Include="wwwroot\client-side\earntoken\assets\js\amcharts\animated.js" />
+    <None Include="wwwroot\client-side\earntoken\assets\js\amcharts\charts.js" />
+    <None Include="wwwroot\client-side\earntoken\assets\js\amcharts\core.js" />
+    <None Include="wwwroot\admin-app\controllers\feedback\index.js" />
+    <None Include="wwwroot\ecosystem\.gitignore" />
+    <None Include="wwwroot\ecosystem\css\basics.scss" />
+    <None Include="wwwroot\ecosystem\css\data.scss" />
+    <None Include="wwwroot\ecosystem\css\images.scss" />
+    <None Include="wwwroot\ecosystem\css\legends.scss" />
+    <None Include="wwwroot\ecosystem\css\lighting.scss" />
+    <None Include="wwwroot\ecosystem\css\responsive.scss" />
+    <None Include="wwwroot\ecosystem\css\styles.scss" />
+    <None Include="wwwroot\ecosystem\css\transitions.scss" />
+    <None Include="wwwroot\ecosystem\css\ui.scss" />
+    <None Include="wwwroot\ecosystem\css\views.scss" />
+    <None Include="wwwroot\ecosystem\js\jquery.1.9.1.js" />
+    <None Include="wwwroot\ecosystem\js\jquery.min.js" />
+    <None Include="wwwroot\ecosystem\js\prefixfree.min.js" />
+    <None Include="wwwroot\ecosystem\js\scripts.js" />
+    <None Include="wwwroot\ecosystem\js\scripts.min.js" />
+    <None Include="wwwroot\ecosystem\README.md" />
+    <None Include="wwwroot\lib\jstree\jstree.bundle.js" />
+    <None Include="wwwroot\lib\notify\js\jquery.growl.js" />
+    <None Include="wwwroot\lib\notify\js\jquery.js" />
+    <None Include="wwwroot\lib\notify\js\notifIt.js" />
+    <None Include="wwwroot\lib\notify\js\rainbow.js" />
+    <None Include="wwwroot\lib\notify\js\sample.js" />
+    <None Include="wwwroot\lib\sweet-alert\sweetalert.min.js" />
+    <None Include="wwwroot\Winwheel\examples\.gitignore" />
+    <None Include="wwwroot\Winwheel\LICENSE" />
+    <None Include="wwwroot\Winwheel\README.md" />
+    <None Include="wwwroot\Winwheel\Winwheel.js" />
+    <None Include="wwwroot\Winwheel\Winwheel.min.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ar.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\bg.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\cs.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\de.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\el.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\en.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\es.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\et.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\eu.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\fi.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\fr.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\he.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\hu.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\it.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ja.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ko.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\nb.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\nl.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\nn.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\pl.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\pt-br.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\pt.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\ru.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\sk.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\tr.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\uk.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\vi.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\lang\zh.js" />
+    <None Include="wwwroot\lib\ckeditor\plugins\youtube\plugin.js" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\.gitignore" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\jquery.qrcode.min.js" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\Makefile" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\README.md" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\src\jquery.qrcode.js" />
+    <None Include="wwwroot\lib\jquery-qrcode-master\src\qrcode.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Application\Core.Application.csproj" />
+    <ProjectReference Include="..\Core.Utilities\Core.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\Account\AccessDenied.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ExternalLogin.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\Profile.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ResendEmailConfirm.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ForgotPassword.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\Lockout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\Login.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\LoginWith2fa.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\LoginWithRecoveryCode.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\Register.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ResetPassword.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\ResetPasswordConfirmation.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Account\SignedOut.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Config\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\InvestTrading\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Report\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Notify\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Notify\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\Components\PagingAffiliate\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\Components\PagingCommission\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_LayoutAccount.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\SupportManage\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\SupportManage\_EditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Support\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Support\_ViewModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Support\_AddModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Network\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Swap\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\User\_AddEditModalCustomer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\BlogCategory\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\BlogCategory\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\MenuItem\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\MenuItem\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Admin\Views\Blog\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Blog\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Function\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\MenuGroup\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\MenuGroup\_AddEditModal.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\Components\PagingUser\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\Components\Paging\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Wallet\_WalletUtility.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\EmailTemplate\_ForgotPassword.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\EmailTemplate\_VerifyAccount.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\Backup\_Footer.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\Backup\_Header.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\Backup\_HeaderBlog.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Shared\Backup\_LayoutPresale.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\confirm-email.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\forget.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\login.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\my-profile.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\my-profile.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\register-confirm.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\register.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\register.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\resend-email-confirm.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\reset-password.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\account\reset-password.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\exchange\index.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\exchange\leader-board.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\exchange\leader-board.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\report-leadership\animation.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\report-leadership\index.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\report-leadership\index.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\report-sale\index.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\report-sale\index.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\report-saving\index.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\report-saving\index.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\wallet\index.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\admin-app\controllers\wallet\index.js">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\client-app\controllers\feedback\index.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\client-app\controllers\report-leadership\index.css">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Admin\Views\Transfer\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Admin\Views\Transfer\Index.cshtml" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,203 @@
+﻿@using Core.Application.ViewModels.Report
+@using System.Globalization
+@model ReportSaleSummaryViewModel
+
+@{
+    ViewBag.Title = "Sale report";
+}
+
+@section Styles{
+    <link href="~/admin-app/controllers/report-sale/index.css" rel="stylesheet" />
+}
+
+    @section Scripts{
+    <script src="~/admin-app/controllers/report-sale/index.js"></script>
+    <script>
+        var reportController = new ReportController();
+        reportController.initialize(parseFloat('@(Model.TotalSeedRound)'),
+            parseFloat('@(Model.TotalAngelRound)'),
+            parseFloat('@(Model.TotalPrivateRound)'),
+            parseFloat('@(Model.TotalPublishRound)'));
+    </script>
+}
+
+
+
+    <div class="d-flex flex-column flex-column-fluid">
+
+        @await Html.PartialAsync("_ToolbarPartial")
+
+        <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+            <div id="kt_app_content_container" class="app-container container-xxl">
+
+                <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+                    <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                        <div class="card card-flush">
+                            <div class="card-header pt-1">
+                                <div class="card-title d-flex flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked">@(Model.TotalSeedRound.ToString("0.00", CultureInfo.InvariantCulture)) </span>
+                                    <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">@(CommonConstants.TOKEN_IN_CODE)</span>
+                                    </div>
+                                    <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                    Seed Round
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                    <div class="card card-flush">
+                        <div class="card-header pt-1">
+                            <div class="card-title d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked">@(Model.TotalAngelRound.ToString("0.00", CultureInfo.InvariantCulture)) </span>
+                                    <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">@(CommonConstants.TOKEN_IN_CODE)</span>
+                                </div>
+                                <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                    Angel Round
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           
+
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                    <div class="card card-flush">
+                        <div class="card-header pt-1">
+                            <div class="card-title d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked">@(Model.TotalPrivateRound.ToString("0.00", CultureInfo.InvariantCulture)) </span>
+                                    <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">@(CommonConstants.TOKEN_IN_CODE)</span>
+                                </div>
+                                <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                    Private Round
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3">
+                    <div class="card card-flush">
+                        <div class="card-header pt-1">
+                            <div class="card-title d-flex flex-column">
+                                <div class="d-flex align-items-center">
+                                    <span class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2 lblTotalValueLocked">@(Model.TotalPublishRound.ToString("0.00", CultureInfo.InvariantCulture)) </span>
+                                    <span class="fs-3 fw-semibold text-gray-400 me-1 align-self-start">@(CommonConstants.TOKEN_IN_CODE)</span>
+                                </div>
+                                <span class="text-gray-600 pt-1 fw-bolder fs-5">
+                                    Publish Round
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                
+                </div>
+
+              
+
+                <div class="row gx-5 gx-xl-10">
+                    <div class="col-xl-12 mb-5 mb-xl-10">
+                    <div class="card ">
+                        <div class="card-header card-header-stretch">
+                            <div class="d-flex flex-stack flex-wrap gap-4">
+                                <div class="position-relative my-1">
+                                    <span class="svg-icon svg-icon-2 position-absolute top-50 translate-middle-y ms-4">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+                                            <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
+                                        </svg>
+                                    </span>
+                                    <input type="text" class="form-control form-control-solid form-control-sm  w-150px fs-7 ps-12" id="txt-search-keyword" placeholder="Search" />
+                                </div>
+                            </div>
+                            <div class="card-toolbar">
+
+                                <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0 ProjectV2_tablinks">
+                                    <li class="nav-item">
+                                        <a class="nav-link active ProjectV2_tablinks" data-id="1" data-bs-toggle="tab" href="#kt_tab_pane_7">F1</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link ProjectV2_tablinks" data-id="2" data-bs-toggle="tab" href="#kt_tab_pane_8">F2</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link ProjectV2_tablinks" data-id="3" data-bs-toggle="tab" href="#kt_tab_pane_9">F3</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link ProjectV2_tablinks" data-id="4" data-bs-toggle="tab" href="#kt_tab_pane_9">F4</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link ProjectV2_tablinks" data-id="5" data-bs-toggle="tab" href="#kt_tab_pane_9">F5</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                        <div class="card">
+                            
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                        <thead>
+                                        <tr class="fw-bolder text-muted">
+                                                <th>Email</th>
+                                                <th>Type Round</th>
+                                                <th>Type</th>
+                                                <th>Amount (@CommonConstants.TOKEN_IN_CODE)</th>
+                                                <th>Amount (BNB ,@CommonConstants.TOKEN_OUT_CODE)</th>
+                                                <th>Create Date</th>
+                                            </tr>
+                                    </thead>
+                                    <tbody id="tbl-content"></tbody>
+                                    <tr class="fw-bolder text-muted">
+                                            <th colspan="5" class="text-success text-right">Total @(CommonConstants.TOKEN_IN_CODE)</th>
+                                        <th class="lbRefTotalSale">0.00</th>
+                                    </tr>
+
+                                    <tr class="fw-bolder text-muted">
+                                        <th colspan="5" class="text-success text-right">Total Buy by BNB</th>
+                                        <th class="lbRefTotalBNB">0.00</th>
+                                    </tr>
+
+                                    <tr class="fw-bolder text-muted">
+                                        <th colspan="5" class="text-success text-right">Total BNB Affiliate</th>
+                                        <th class="lbRefTotalBNBAff">0.00</th>
+                                    </tr>
+
+                                    <tr class="fw-bolder text-muted">
+                                        <th colspan="5" class="text-success text-right">Total Swap by @(CommonConstants.TOKEN_OUT_CODE)</th>
+                                        <th class="lbRefTotalSwap">0.00</th>
+                                    </tr>
+
+                                    <tr class="fw-bolder text-muted">
+                                        <th colspan="5" class="text-success text-right">Total @(CommonConstants.TOKEN_OUT_CODE) Affiliate</th>
+                                        <th class="lbRefTotalSwapAff">0.00</th>
+                                    </tr>
+                                </table>
+                            </div>
+                           @await Component.InvokeAsync("AjaxPagingCommission")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr class="{{bgName}}">
+        <td>{{Email}}</td>
+        <td>{{TypeRound}}</td>
+        <td>{{ActionType}}</td>
+        <td>{{Amount}} @(CommonConstants.TOKEN_IN_CODE)</td>
+        <td>{{AmountFrom}} {{TokenFrom}}</td>
+        <td>{{CreatedOn}}</td>
+    </tr>
+</script>

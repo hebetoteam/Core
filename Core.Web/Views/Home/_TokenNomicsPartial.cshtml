@@ -1,0 +1,194 @@
+﻿@{
+    var svgIconSuccess = "<div class=\"timeline-icon\" style=\"margin-left: 11px\">" +
+                                "<span class=\"svg-icon svg-icon-2 svg-icon-success\">" +
+                                    "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">" +
+                                        "<path opacity=\"0.3\" d=\"M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10ZM6.39999 9.89999C6.99999 8.19999 8.40001 6.9 10.1 6.4C10.6 6.2 10.9 5.7 10.7 5.1C10.5 4.6 9.99999 4.3 9.39999 4.5C7.09999 5.3 5.29999 7 4.39999 9.2C4.19999 9.7 4.5 10.3 5 10.5C5.1 10.5 5.19999 10.6 5.39999 10.6C5.89999 10.5 6.19999 10.2 6.39999 9.89999ZM14.8 19.5C17 18.7 18.8 16.9 19.6 14.7C19.8 14.2 19.5 13.6 19 13.4C18.5 13.2 17.9 13.5 17.7 14C17.1 15.7 15.8 17 14.1 17.6C13.6 17.8 13.3 18.4 13.5 18.9C13.6 19.3 14 19.6 14.4 19.6C14.5 19.6 14.6 19.6 14.8 19.5Z\" fill=\"currentColor\"/>" +
+                                        "<path d=\"M16 12C16 14.2 14.2 16 12 16C9.8 16 8 14.2 8 12C8 9.8 9.8 8 12 8C14.2 8 16 9.8 16 12ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z\" fill=\"currentColor\" />" +
+                                    "</svg>" +
+                                "</span>" +
+                            "</div>";
+
+    var svgIconDanger = "<div class=\"timeline-icon\" style=\"margin-left: 11px\">" +
+                                "<span class=\"svg-icon svg-icon-2 svg-icon-danger\">" +
+                                    "<svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">" +
+                                        "<path opacity=\"0.3\" d=\"M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10ZM6.39999 9.89999C6.99999 8.19999 8.40001 6.9 10.1 6.4C10.6 6.2 10.9 5.7 10.7 5.1C10.5 4.6 9.99999 4.3 9.39999 4.5C7.09999 5.3 5.29999 7 4.39999 9.2C4.19999 9.7 4.5 10.3 5 10.5C5.1 10.5 5.19999 10.6 5.39999 10.6C5.89999 10.5 6.19999 10.2 6.39999 9.89999ZM14.8 19.5C17 18.7 18.8 16.9 19.6 14.7C19.8 14.2 19.5 13.6 19 13.4C18.5 13.2 17.9 13.5 17.7 14C17.1 15.7 15.8 17 14.1 17.6C13.6 17.8 13.3 18.4 13.5 18.9C13.6 19.3 14 19.6 14.4 19.6C14.5 19.6 14.6 19.6 14.8 19.5Z\" fill=\"currentColor\"/>" +
+                                        "<path d=\"M16 12C16 14.2 14.2 16 12 16C9.8 16 8 14.2 8 12C8 9.8 9.8 8 12 8C14.2 8 16 9.8 16 12ZM12 10C10.9 10 10 10.9 10 12C10 13.1 10.9 14 12 14C13.1 14 14 13.1 14 12C14 10.9 13.1 10 12 10Z\" fill=\"currentColor\" />" +
+                                    "</svg>" +
+                                "</span>" +
+                            "</div>";
+}
+
+<div class="card h-xl-100">
+    <div class="card-header position-relative py-0 border-bottom-2">
+        <ul class="nav nav-stretch nav-pills nav-pills-custom d-flex mt-3">
+            <li class="nav-item p-0 ms-0 me-8">
+                <a class="nav-link btn btn-color-muted active px-0" data-bs-toggle="tab" id="kt_chart_widgets_22_tab_1" href="#kt_chart_widgets_22_tab_content_1">
+                    <span class="nav-text fw-bold fs-5 mb-3">Token Nomics</span>
+                    <span class="bullet-custom position-absolute z-index-2 w-100 h-2px top-100 bottom-n100 bg-primary rounded"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body pb-3">
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="kt_chart_widgets_22_tab_content_1">
+                <div class="d-flex flex-wrap flex-md-nowrap">
+                    <div class="w-100">
+                        <div class="d-flex border border-gray-300 border-dashed rounded p-3 mb-3">
+                            <div class="d-flex align-items-center flex-grow-1 me-2 me-sm-3">
+                                <div class="me-2">
+                                    <a href="#" class="text-dark text-hover-primary fs-6 fw-bold">Marketing</a>
+                                    <span class="text-gray-700 fw-bold d-block fs-7">
+                                        - Used to reward the Airdrop event
+                                    </span>
+                                    <span class="text-gray-700 fw-bold d-block fs-7">
+                                        - Reciprocal when list on the centralized Exchange
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge badge-lg badge-light-info align-self-center px-2">8.33%</span>
+                            </div>
+                        </div>
+                        <div class="d-flex border border-gray-300 border-dashed rounded p-3 mb-3">
+                            <div class="d-flex align-items-center flex-grow-1 me-2 me-sm-3">
+                                <div class="me-2">
+                                    <a href="#" class="text-dark text-hover-primary fs-6 fw-bold">Staking</a>
+                                    <span class="text-gray-700 fw-bold d-block fs-7">Used to run the Staking event</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge badge-lg badge-light-success align-self-center px-2">58.33%</span>
+                            </div>
+                        </div>
+                        <div class="d-flex border border-gray-300 border-dashed rounded p-3 mb-3">
+                            <div class="d-flex align-items-center flex-grow-1 me-2 me-sm-3">
+                                <div class="me-2">
+                                    <a href="#" class="text-dark text-hover-primary fs-6 fw-bold">Angel Investor</a>
+
+                                    <span class="text-gray-700 fw-bold d-block fs-7">
+                                        - Bonus for Angel Investors
+                                    </span>
+                                    <span class="text-gray-700 fw-bold d-block fs-7">
+                                        - Lock 2 years, unlock 2% every month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge badge-lg badge-light-primary align-self-center px-2">8.33%</span>
+                            </div>
+                        </div>
+                        <div class="d-flex border border-gray-300 border-dashed rounded p-3 mb-3">
+                            <div class="d-flex align-items-center flex-grow-1 me-2 me-sm-3">
+                                <div class="me-2">
+                                    <a href="#" class="text-dark text-hover-primary fs-6 fw-bold">Dev</a>
+                                    <span class="text-gray-700 fw-bold d-block fs-7">
+                                        - Bonus for Team
+                                    </span>
+                                    <span class="text-gray-700 fw-bold d-block fs-7">
+                                        - Lock 2 years, unlock 2% every month
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge badge-lg badge-light-danger align-self-center px-2">25.00%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column w-300px w-md-600px mx-auto mx-md-0 pt-3 pb-10">
+                        <div id="kt_chart_widgets_22_chart_1" class="mx-auto mb-4"></div>
+                        <div class="mx-auto">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bullet bullet-dot w-8px h-7px bg-info me-2"></div>
+                                <div class="fs-8 fw-semibold text-gray-600">Marketing | 10,000,000</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bullet bullet-dot w-8px h-7px bg-success me-2"></div>
+                                <div class="fs-8 fw-semibold text-gray-600">Staking | 70,000,000</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bullet bullet-dot w-8px h-7px bg-primary me-2"></div>
+                                <div class="fs-8 fw-semibold text-gray-600">Angel Investor | 10,000,000</div>
+                            </div>
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bullet bullet-dot w-8px h-7px bg-danger me-2"></div>
+                                <div class="fs-8 fw-semibold text-gray-600">Dev | 30,000,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card h-xl-100 py-5">
+                    <h3 class="card-title align-items-start flex-column py-5">
+                        <span class="card-label fw-bold text-primary fs-5">Token Detail</span>
+                    </h3>
+                    <div class="d-flex flex-stack">
+                        <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                            <div class="flex-grow-1 me-2">
+                                <span class="text-gray-800 text-hover-primary fs-6 fw-semibold">Token Name:</span>
+                            </div>
+                            <span class="text-gray-800 text-hover-primary fs-6">Hebeto</span>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed my-4"></div>
+                    <div class="d-flex flex-stack">
+                        <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                            <div class="flex-grow-1 me-2">
+                                <span class="text-gray-800 text-hover-primary fs-6 fw-semibold">Token Symbol:</span>
+                            </div>
+                            <span class="text-gray-700 text-hover-primary fs-6">HBT</span>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed my-4"></div>
+                    <div class="d-flex flex-stack">
+                        <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                            <div class="flex-grow-1 me-2">
+                                <span class="text-gray-800 text-hover-primary fs-6 fw-semibold">Decimals:</span>
+                            </div>
+                            <span class="text-gray-700 text-hover-primary fs-6">18</span>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed my-4"></div>
+                    <div class="d-flex flex-stack">
+                        <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                            <div class="flex-grow-1 me-2">
+                                <span class="text-gray-800 text-hover-primary fs-6 fw-semibold">Max. Supply:</span>
+                            </div>
+                            <span class="text-gray-800 text-hover-primary fs-6">120,000,000</span>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed my-4"></div>
+                    <div class="d-flex flex-stack">
+                        <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                            <div class="flex-grow-1 me-2">
+                                <span class="text-gray-800 text-hover-primary fs-6 fw-semibold">Token Platform:</span>
+                            </div>
+                            <span class="text-gray-700 text-hover-primary fs-6">BSC Smart Chain</span>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed my-4"></div>
+                    <div class="d-flex flex-stack">
+                        <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                            <div class="flex-grow-1 me-2">
+                                <span class="text-gray-800 text-hover-primary fs-6 fw-semibold">Token Standard:</span>
+                            </div>
+                            <span class="text-gray-800 text-hover-primary fs-6">BEP20</span>
+                        </div>
+                    </div>
+                    <div class="separator separator-dashed my-4"></div>
+                    <div class="d-flex flex-stack">
+                        <div class="d-flex align-items-center flex-row-fluid flex-wrap">
+                            <div class="flex-grow-1 me-2">
+                                <span class="text-gray-800 text-hover-primary fs-6 fw-semibold">Address:</span>
+                            </div>
+                            <a href="https://bscscan.com/token/0x94ab0513efB4A8143c3455AD89DeCF7853746f15" 
+                               class="text-primary text-hover-primary fs-6" target="_blank">
+                                0x94ab0513ef...F7853746f15
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

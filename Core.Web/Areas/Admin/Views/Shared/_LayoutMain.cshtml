@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@(CommonConstants.PROJECT_NAME)  - Decentralized Financial Infrastructur</title>
+    <<meta name="description" content="@(CommonConstants.PROJECT_NAME) - Decentralized Financial Infrastructure" />
+    <meta name="keywords" content="@(CommonConstants.PROJECT_NAME),Decentralized,Financial,staking" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="@(CommonConstants.PROJECT_NAME) - Decentralized Financial Infrastructure" />
+    <meta property="og:url" content="@(CommonConstants.PROJECT_SITE)" />
+    <meta property="og:site_name" content="@(CommonConstants.PROJECT_NAME)" />
+    
+    <link rel="shortcut icon" href="~/images/tokenicon.webp" />
+
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+    <!--end::Fonts-->
+    <!--begin::Vendor Stylesheets(used by this page)-->
+    <link href="~/admin-side/demo1/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin-side/demo1/dist/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Vendor Stylesheets-->
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link href="~/admin-side/demo1/dist/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin-side/demo1/dist/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+
+    @RenderSection("Styles", required: false)
+
+    @*<style>
+
+        .video__wrapper {
+            background-color: #151521;
+            inset: 0;
+            min-height: 100vh;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
+
+            .video__wrapper video {
+                height: 100%;
+                mix-blend-mode: multiply;
+                object-fit: cover;
+                object-position: center;
+                width: 100%;
+            }
+    </style>*@
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2HTMX2HHGD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2HTMX2HHGD');
+    </script>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" data-kt-app-layout="dark-header" data-kt-app-header-fixed="true" data-kt-app-toolbar-enabled="true" class="app-default">
+    <script>
+        var defaultThemeMode = "dark";
+        var themeMode;
+        if (document.documentElement) {
+            if (document.documentElement.hasAttribute("data-theme-mode")) {
+                themeMode = document.documentElement.getAttribute("data-theme-mode");
+            }
+            else {
+                if (localStorage.getItem("data-theme") !== null) {
+                    themeMode = localStorage.getItem("data-theme");
+                } else {
+                    themeMode = defaultThemeMode;
+                }
+            }
+
+            if (themeMode === "system") {
+                themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            }
+            document.documentElement.setAttribute("data-theme", themeMode);
+        }
+    </script>
+
+    @*<div class="video__wrapper">
+        <video autoplay loop playsinline>
+            <source src="/video/hebetoscreen.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>*@
+
+    <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
+        <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+            @await Html.PartialAsync("_HeaderPartial")
+            <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+                <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+                    @RenderBody()
+                    @await Html.PartialAsync("_FooterPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @await Html.PartialAsync("_UtilityPartial")
+
+    <script>
+        var hostUrl = "assets/";
+    </script>
+
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="~/admin-side/demo1/dist/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/admin-side/demo1/dist/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+    <!--begin::Vendors Javascript(used by this page)-->
+    <script src="~/admin-side/demo1/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/radar.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/continentsLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/usaLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZonesLow.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/geodata/worldTimeZoneAreasLow.js"></script>
+    <script src="~/admin-side/demo1/dist/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <!--end::Vendors Javascript-->
+    <!--begin::Custom Javascript(used by this page)-->
+    <script src="~/admin-side/demo1/dist/assets/js/widgets.bundle.js"></script>
+    <script src="~/admin-side/demo1/dist/assets/js/custom/widgets.js"></script>
+    <script src="~/admin-side/demo1/dist/assets/js/custom/apps/chat/chat.js"></script>
+    <script src="~/admin-side/demo1/dist/assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+    <script src="~/admin-side/demo1/dist/assets/js/custom/utilities/modals/create-app.js"></script>
+    <script src="~/admin-side/demo1/dist/assets/js/custom/utilities/modals/users-search.js"></script>
+    <!--end::Custom Javascript-->
+    <!--end::Javascript-->
+    <!--mustache-->
+    <script src="~/lib/mustache/mustache.js"></script>
+
+    <!--ckeditor-->
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+
+    <!-- twbs-pagination -->
+    <script src="~/lib/twbs-pagination/jquery.twbsPagination.js"></script>
+
+    <script src="~/admin-app/shared/be.js"></script>
+
+    @Html.AntiForgeryToken()
+
+    @RenderSection("Scripts", required: false)
+</body>
+<!--end::Body-->
+</html>

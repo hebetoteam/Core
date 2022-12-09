@@ -1,0 +1,128 @@
+﻿@model AppUserViewModel
+@{
+    ViewBag.Title = "Profile";
+}
+
+@section Scripts{
+    <script src="~/admin-app/controllers/account/my-profile.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-qrcode-master/src/jquery.qrcode.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-qrcode-master/src/qrcode.js" asp-append-version="true"></script>
+
+    <script>
+        var myProfileObj = new MyProfileController();
+        myProfileObj.initialize();
+    </script>
+}
+
+@section Styles{
+    <link href="~/admin-app/controllers/account/my-profile.css" rel="stylesheet" asp-append-version="true" />
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
+                <form>
+                    @Html.AntiForgeryToken()
+                    <input id="email" type="hidden" value="@Model.Email" />
+                    <div class="card-body p-9">
+                        <div class="row mb-7 mt-7">
+                            <label class="col-lg-4 fw-bold text-muted">Email</label>
+                            <div class="col-lg-8">
+                                <span class="fw-bolder fs-6 text-gray-800">@Model.Email</span>
+                            </div>
+                        </div>
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-bold text-muted">Sponsor ID</label>
+                            <div class="col-lg-8 fv-row">
+                                <span class="fw-bold text-gray-800 fs-6">@Model.Sponsor</span>
+                            </div>
+                        </div>
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-bold text-muted">Referral Link</label>
+                            <div class="col-lg-8">
+                                <a href="javascript:void(0)" id="btnCopyReferralLink" class="fw-bold fs-6 text-gray-800 text-hover-primary">@Model.ReferalLink</a>
+
+                            </div>
+                        </div>
+
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-bold text-muted">Created Date</label>
+                            <div class="col-lg-8">
+                                <span class="fw-bolder fs-6 text-gray-800">@Model.DateCreated.ToShortDateString()</span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-10">
+                            <label class="col-lg-4 fw-bold text-muted">Email Confirmed</label>
+                            <div class="col-lg-8">
+                                @if (Model.EmailConfirmed)
+                                {
+                                    <span class="badge badge-light-success me-auto">Verified</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-light-danger me-auto">Unverify</span>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row mb-10">
+                            <label class="col-lg-4 fw-bold text-muted">Two Factor Authentication</label>
+                            <div class="col-lg-8">
+                                @if (Model.Enabled2FA)
+                                {
+                                    <span class="badge badge-light-success me-auto">Enabled</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-light-danger me-auto">Disabled</span>
+                                }
+
+                                <button type="button" class="btn btn-sm btn-light-dark btn-active-light-success me-3" data-bs-toggle="modal" data-bs-target="#two-factor-authentication">
+                                    @if (Model.Enabled2FA)
+                                    {
+                                        <span>  Disable 2FA </span>
+                                    }
+                                    else
+                                    {
+                                        <span> Enable 2FA </span>
+                                    }
+                                </button>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-bold text-muted">
+                                BEP20 Address
+                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Bep20 address (smart chain)"></i>
+                            </label>
+                            <div class="col-lg-8">
+                                <span class="fw-bolder fs-6 text-gray-800">@Model.PublishKey</span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-7">
+                            <label class="col-lg-4 fw-bold text-muted">Password</label>
+                            <div class="col-lg-8 fv-row">
+                                <button type="button" class="btn btn-sm btn-light-dark btn-active-light-success me-3" data-bs-toggle="modal" data-bs-target="#reset-password">
+                                    <span>Change Password</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="./Partial/_TwoFactorModal.cshtml" />
+<partial name="./Partial/_ResetPasswordModal.cshtml" />
+<partial name="./Partial/_ActivateReferralModal.cshtml" />

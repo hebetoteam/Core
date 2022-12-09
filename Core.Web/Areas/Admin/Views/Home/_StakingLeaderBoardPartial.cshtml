@@ -1,0 +1,64 @@
+﻿<div class="row gx-5 gx-xl-10">
+    <div class="col-xl-12 mb-5 mb-xl-5">
+        <div class="card">
+            <div class="card-header pt-5">
+                <h4 class="card-title align-items-start flex-column">
+                    <span class="card-label fw-bold fs-5">Staking Leaderboard</span>
+                    <span class="text-gray-400 mt-1 fw-semibold fs-6">Latest leaderboard list</span>
+                </h4>
+                <div class="card-toolbar">
+                    <div class="d-flex flex-stack flex-wrap gap-4">
+                        <a href="/admin/staking/leaderboard" class="text-gray-600">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                        <thead>
+                            <tr class="fw-bolder text-muted">
+                                <th>Package</th>
+                                <th>Sponsor</th>
+                                <th>Price</th>
+                                <th>
+                                    <span class="d-block">PublishKey</span>
+                                    <span class="d-block">TxtHash</span>
+                                </th>
+                                <th>Create Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-content-staking"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template-staking" type="x-tmpl-mustache">
+    <tr>
+        <td>
+            <div class="d-flex align-items-center">
+                <img src="{{PackageImage}}" width="70" />
+                <div class="ms-2">
+                    <span class="fw-bolder text-dark d-block fs-7">{{PackageName}}</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <span class="text-gray-800 fw-bold text-hover-primary d-block fs-7">{{Sponsor}}</span>
+        </td>
+        <td>
+            <span class="text-dark fw-bold text-hover-primary d-block fs-7">{{StakingAmount}}</span>
+        </td>
+        <td>
+            <a href="https://bscscan.com/address/{{PublishKey}}#tokentxns" target="_blank"
+                class="text-gray-800 fw-bold text-hover-primary d-block fs-7">{{PublishKey}}</span>
+            <a href="https://bscscan.com/tx/{{TransactionHash}}" target="_blank"
+                class="text-gray-700 fw-bold text-hover-primary d-block fs-7">{{TransactionHash}}</span>
+        </td>
+        <td>
+            <span class="text-muted fw-bold text-hover-primary d-block fs-7">{{DateCreated}}</span>
+        </td>
+    </tr>
+</script>

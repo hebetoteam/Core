@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Invest Trading Config";
+}
+
+@section Styles{
+   
+}
+
+@section Scripts{
+
+    <script src="~/admin-app/controllers/investtradingconfig/index.js"></script>
+    <script>
+        var configs = new configsController();
+        configs.initialize();
+    </script>
+}
+
+<div id="appConfig" class="container">
+
+    <!--begin::Row-->
+    <div class="row g-5 g-xxl-11">
+        <!--begin::Col-->
+        <div class="col-xl-11">
+            <!--begin::Feeds Widget 1-->
+            <div class="card mb-5 mb-xxl-11">
+
+
+                <div class="card-header">
+                    <h3 class="card-title">Configs</h3>
+                    @*<div class="card-toolbar">
+                        <button id="btnCreate" type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#kt_modal_Add_Configs">
+                            <i style="color:goldenrod;" class="bi bi-plus"></i> Add configs
+                        </button>
+                    </div>*@
+                </div>
+                <div class="card-body">
+
+                    <table class="table table-row-dashed table-row-gray-300 gy-7">
+                        <thead>
+                            <tr class="fw-bolder fs-6 text-gray-800">
+                                
+                                <th>Name</th>
+                                <th>Value</th>
+                                <th>Description</th>
+                                <th>Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-content"></tbody>
+                    </table>
+                </div>
+                
+
+                <!--end::Feeds Widget 1-->
+            </div>
+            <!--end::Col-->
+
+        </div>
+        <!--end::Row-->
+        <!--begin::Modals-->
+        <!--end::Modals-->
+    </div>
+
+    <script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        
+        <td>{{Name}}</td>
+        <td>{{Value}}</td>
+        <td>{{Description}}</td>
+        <th scope="row">
+            <a class="btn btn-sm btn-edit" data-id="{{Id}}"><i class="fa fa-pen-nib text-success"></i></a>
+        </th>
+    </tr>
+    </script>
+
+    @await Html.PartialAsync("_AddEditConfigsModal")
+
+    </div>

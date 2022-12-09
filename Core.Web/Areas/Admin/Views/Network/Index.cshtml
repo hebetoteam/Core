@@ -1,0 +1,177 @@
+﻿@model NetworkViewModel
+
+@{
+    ViewBag.Title = "Network";
+}
+
+@section Scripts{
+    <script src="~/admin-side/demo1/dist/assets/plugins/custom/jstree/jstree.bundle.js"></script>
+    <script src="~/admin-app/controllers/network/index.js" asp-append-version="true"></script>
+
+    <script>
+        var networkObj = new NetworkController();
+        networkObj.initialize();
+    </script>
+}
+
+@section Styles{
+    <link href="~/admin-app/controllers/network/index.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/admin-side/demo1/dist/assets/plugins/custom/jstree/jstree.bundle.css" rel="stylesheet" />
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12">
+
+                    <div class="card mb-8">
+                        <div class="card-body pt-9 pb-0">
+                            <div class="d-flex flex-wrap flex-sm-nowrap mb-6">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+                                        <div class="d-flex flex-column mb-5">
+                                            <div class="d-flex align-items-center mb-1">
+                                                <a href="#" class="text-gray-800 text-hover-warning fs-4 fw-bolder me-3">@Model.Email</a>
+                                                @if (Model.EmailConfirmed)
+                                                {
+                                                    <span class="badge badge-light-success me-auto">Verified</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge badge-light-danger me-auto">Unverify</span>
+                                                }
+                                            </div>
+                                        </div>
+                                        <form class="w-100 position-relative mb-5" autocomplete="off">
+                                            <span class="svg-icon svg-icon-2 svg-icon-lg-1 position-absolute top-50 translate-middle-y svg-icon-primary"
+                                                  id="btnCopyReferlink" style="background: #2da2ff21;padding: 12px;border-radius: .65rem 0 0 .65rem;cursor: pointer;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"></rect>
+                                                        <path d="M11.7573593,15.2426407 L8.75735931,15.2426407 C8.20507456,15.2426407 7.75735931,15.6903559 7.75735931,16.2426407 C7.75735931,16.7949254 8.20507456,17.2426407 8.75735931,17.2426407 L11.7573593,17.2426407 L11.7573593,18.2426407 C11.7573593,19.3472102 10.8619288,20.2426407 9.75735931,20.2426407 L5.75735931,20.2426407 C4.65278981,20.2426407 3.75735931,19.3472102 3.75735931,18.2426407 L3.75735931,14.2426407 C3.75735931,13.1380712 4.65278981,12.2426407 5.75735931,12.2426407 L9.75735931,12.2426407 C10.8619288,12.2426407 11.7573593,13.1380712 11.7573593,14.2426407 L11.7573593,15.2426407 Z" fill="#000000" opacity="0.3" transform="translate(7.757359, 16.242641) rotate(-45.000000) translate(-7.757359, -16.242641)"></path>
+                                                        <path d="M12.2426407,8.75735931 L15.2426407,8.75735931 C15.7949254,8.75735931 16.2426407,8.30964406 16.2426407,7.75735931 C16.2426407,7.20507456 15.7949254,6.75735931 15.2426407,6.75735931 L12.2426407,6.75735931 L12.2426407,5.75735931 C12.2426407,4.65278981 13.1380712,3.75735931 14.2426407,3.75735931 L18.2426407,3.75735931 C19.3472102,3.75735931 20.2426407,4.65278981 20.2426407,5.75735931 L20.2426407,9.75735931 C20.2426407,10.8619288 19.3472102,11.7573593 18.2426407,11.7573593 L14.2426407,11.7573593 C13.1380712,11.7573593 12.2426407,10.8619288 12.2426407,9.75735931 L12.2426407,8.75735931 Z" fill="#000000" transform="translate(16.242641, 7.757359) rotate(-45.000000) translate(-16.242641, -7.757359)"></path>
+                                                        <path d="M5.89339828,3.42893219 C6.44568303,3.42893219 6.89339828,3.87664744 6.89339828,4.42893219 L6.89339828,6.42893219 C6.89339828,6.98121694 6.44568303,7.42893219 5.89339828,7.42893219 C5.34111353,7.42893219 4.89339828,6.98121694 4.89339828,6.42893219 L4.89339828,4.42893219 C4.89339828,3.87664744 5.34111353,3.42893219 5.89339828,3.42893219 Z M11.4289322,5.13603897 C11.8194565,5.52656326 11.8194565,6.15972824 11.4289322,6.55025253 L10.0147186,7.96446609 C9.62419433,8.35499039 8.99102936,8.35499039 8.60050506,7.96446609 C8.20998077,7.5739418 8.20998077,6.94077682 8.60050506,6.55025253 L10.0147186,5.13603897 C10.4052429,4.74551468 11.0384079,4.74551468 11.4289322,5.13603897 Z M0.600505063,5.13603897 C0.991029355,4.74551468 1.62419433,4.74551468 2.01471863,5.13603897 L3.42893219,6.55025253 C3.81945648,6.94077682 3.81945648,7.5739418 3.42893219,7.96446609 C3.0384079,8.35499039 2.40524292,8.35499039 2.01471863,7.96446609 L0.600505063,6.55025253 C0.209980772,6.15972824 0.209980772,5.52656326 0.600505063,5.13603897 Z" fill="#000000" opacity="0.3" transform="translate(6.014719, 5.843146) rotate(-45.000000) translate(-6.014719, -5.843146)"></path>
+                                                        <path d="M17.9142136,15.4497475 C18.4664983,15.4497475 18.9142136,15.8974627 18.9142136,16.4497475 L18.9142136,18.4497475 C18.9142136,19.0020322 18.4664983,19.4497475 17.9142136,19.4497475 C17.3619288,19.4497475 16.9142136,19.0020322 16.9142136,18.4497475 L16.9142136,16.4497475 C16.9142136,15.8974627 17.3619288,15.4497475 17.9142136,15.4497475 Z M23.4497475,17.1568542 C23.8402718,17.5473785 23.8402718,18.1805435 23.4497475,18.5710678 L22.0355339,19.9852814 C21.6450096,20.3758057 21.0118446,20.3758057 20.6213203,19.9852814 C20.2307961,19.5947571 20.2307961,18.9615921 20.6213203,18.5710678 L22.0355339,17.1568542 C22.4260582,16.76633 23.0592232,16.76633 23.4497475,17.1568542 Z M12.6213203,17.1568542 C13.0118446,16.76633 13.6450096,16.76633 14.0355339,17.1568542 L15.4497475,18.5710678 C15.8402718,18.9615921 15.8402718,19.5947571 15.4497475,19.9852814 C15.0592232,20.3758057 14.4260582,20.3758057 14.0355339,19.9852814 L12.6213203,18.5710678 C12.2307961,18.1805435 12.2307961,17.5473785 12.6213203,17.1568542 Z" fill="#000000" opacity="0.3" transform="translate(18.035534, 17.863961) scale(1, -1) rotate(45.000000) translate(-18.035534, -17.863961)"></path>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <input type="text" class="form-control form-control-lg form-control-solid px-15" id="txtReferlink" readonly value="@Model.ReferalLink">
+                                        </form>
+                                    </div>
+
+                                    <div class="d-flex flex-wrap justify-content-start">
+                                        <div class="d-flex flex-wrap">
+
+                                            <div class="border border-gray-500 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-info me-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z" fill="#000000" opacity="0.3"></path>
+                                                            <path d="M12,11 C10.8954305,11 10,10.1045695 10,9 C10,7.8954305 10.8954305,7 12,7 C13.1045695,7 14,7.8954305 14,9 C14,10.1045695 13.1045695,11 12,11 Z" fill="#000000" opacity="0.3"></path>
+                                                            <path d="M7.00036205,16.4995035 C7.21569918,13.5165724 9.36772908,12 11.9907452,12 C14.6506758,12 16.8360465,13.4332455 16.9988413,16.5 C17.0053266,16.6221713 16.9988413,17 16.5815,17 C14.5228466,17 11.463736,17 7.4041679,17 C7.26484009,17 6.98863236,16.6619875 7.00036205,16.4995035 Z" fill="#000000" opacity="0.3"></path>
+                                                        </svg>
+                                                    </span>
+                                                    <div class="fs-7 fw-bold">@Model.Sponsor</div>
+                                                </div>
+                                                <div class="fw-bold fs-7 text-gray-800">Sponsor ID</div>
+                                            </div>
+
+                                            <div class="border border-gray-500 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-warning me-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <rect x="0" y="0" width="24" height="24"></rect>
+                                                                <rect fill="#000000" opacity="0.3" x="4" y="4" width="4" height="4" rx="1"></rect>
+                                                                <path d="M5,10 L7,10 C7.55228475,10 8,10.4477153 8,11 L8,13 C8,13.5522847 7.55228475,14 7,14 L5,14 C4.44771525,14 4,13.5522847 4,13 L4,11 C4,10.4477153 4.44771525,10 5,10 Z M11,4 L13,4 C13.5522847,4 14,4.44771525 14,5 L14,7 C14,7.55228475 13.5522847,8 13,8 L11,8 C10.4477153,8 10,7.55228475 10,7 L10,5 C10,4.44771525 10.4477153,4 11,4 Z M11,10 L13,10 C13.5522847,10 14,10.4477153 14,11 L14,13 C14,13.5522847 13.5522847,14 13,14 L11,14 C10.4477153,14 10,13.5522847 10,13 L10,11 C10,10.4477153 10.4477153,10 11,10 Z M17,4 L19,4 C19.5522847,4 20,4.44771525 20,5 L20,7 C20,7.55228475 19.5522847,8 19,8 L17,8 C16.4477153,8 16,7.55228475 16,7 L16,5 C16,4.44771525 16.4477153,4 17,4 Z M17,10 L19,10 C19.5522847,10 20,10.4477153 20,11 L20,13 C20,13.5522847 19.5522847,14 19,14 L17,14 C16.4477153,14 16,13.5522847 16,13 L16,11 C16,10.4477153 16.4477153,10 17,10 Z M5,16 L7,16 C7.55228475,16 8,16.4477153 8,17 L8,19 C8,19.5522847 7.55228475,20 7,20 L5,20 C4.44771525,20 4,19.5522847 4,19 L4,17 C4,16.4477153 4.44771525,16 5,16 Z M11,16 L13,16 C13.5522847,16 14,16.4477153 14,17 L14,19 C14,19.5522847 13.5522847,20 13,20 L11,20 C10.4477153,20 10,19.5522847 10,19 L10,17 C10,16.4477153 10.4477153,16 11,16 Z M17,16 L19,16 C19.5522847,16 20,16.4477153 20,17 L20,19 C20,19.5522847 19.5522847,20 19,20 L17,20 C16.4477153,20 16,19.5522847 16,19 L16,17 C16,16.4477153 16.4477153,16 17,16 Z" fill="#000000"></path>
+                                                            </g>
+                                                        </svg>
+                                                    </span>
+                                                    <div class="fs-7 fw-bold">@Model.CreatedDate.ToString("dd/MM/yyyy")</div>
+                                                </div>
+                                                <div class="fw-bold fs-7 text-gray-800">Created Date</div>
+                                            </div>
+
+                                            <div class="border border-gray-500 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-warning me-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" color="#82c8ff" width="24px" height="24px" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                            <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                                                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                                                        </svg>
+                                                    </span>
+                                                    <div class="fs-7 fw-bold" data-kt-countup="true" id="TotalNetwork">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-7 text-gray-800">Total Network</div>
+                                            </div>
+
+                                            <div class="border border-gray-500 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-warning me-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" color="#82c8ff" width="24px" height="24px" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                            <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                                                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                                                        </svg>
+                                                    </span>
+                                                    <div class="fs-7 fw-bold" data-kt-countup="true" id="TotalStaking">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-7 text-gray-800">Total Staking</div>
+                                            </div>
+
+                                            <div class="border border-gray-500 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-warning me-2">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" color="#82c8ff" width="24px" height="24px" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                                            <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                                                            <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                                                        </svg>
+                                                    </span>
+                                                    <div class="fs-7 fw-bold" data-kt-countup="true" id="TotalStakingAffiliate">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-7 text-gray-800">Total Staking Affiliate</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+
+                    <div class="card mb-8">
+                        
+                        <div class="card mb-2 mb-xl-10">
+                            <div class="card-header border-0 pt-5">
+                                <ul class="breadcrumb breadcrumb-dot fw-bold fs-base my-1">
+                                    <li class="breadcrumb-item text-muted">Email</li>
+                                    <li class="breadcrumb-item text-muted">Sponsor ID</li>
+                                    <li class="breadcrumb-item text-muted">Staking Amount</li>
+                                    <li class="breadcrumb-item text-muted">Staking Affiliate</li>
+                                    <li class="breadcrumb-item text-muted">Confirm Email</li>
+                                    <li class="breadcrumb-item text-muted">Created Date</li>
+                                </ul>
+                            </div>
+                            <div class="card-body py-10">
+                                <div class="table-responsive">
+                                    <div id="jstree"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

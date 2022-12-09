@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Core.Authorization
+@inject IAuthorizationService AuthorizationService
+@{
+    ViewBag.Title = "Tree View";
+}
+
+@section Scripts{
+    
+    <script src="~/admin-side/demo1/dist/assets/plugins/custom/jstree/jstree.bundle.js"></script>
+    <script src="~/admin-app/controllers/user/indextree.js" asp-append-version="true"></script>
+    <script>
+        var customerTreeObj = new CustomerTreeController();
+        customerTreeObj.initialize();
+    </script>
+}
+
+@section Styles{
+    <link href="~/admin-side/demo1/dist/assets/plugins/custom/jstree/jstree.bundle.css" rel="stylesheet" />
+}
+
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+                    <div class="card">
+                        <div class="card-header pt-5">
+                            <ul class="breadcrumb breadcrumb-dot fw-bold fs-base my-1">
+                                 <li class="breadcrumb-item text-muted">Email</li>
+                                    <li class="breadcrumb-item text-muted">Sponsor ID</li>
+                                    <li class="breadcrumb-item text-muted">USDT Amount</li>
+                                    <li class="breadcrumb-item text-muted">HeBeTo Amount</li>
+                                    <li class="breadcrumb-item text-muted">Staking Amount</li>
+                                    <li class="breadcrumb-item text-muted">Staking Affiliate</li>
+                                    <li class="breadcrumb-item text-muted">Confirm Email</li>
+                                    <li class="breadcrumb-item text-muted">Created Date</li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="jstree"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,455 @@
+﻿
+@using Core.Utilities.Constants
+@using Core.Data.Enums
+@using Core.Utilities.Extensions
+
+@{
+    ViewBag.Title = "Package";
+}
+
+@section Styles{
+    <link href="~/admin-app/controllers/staking/index.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts{
+    <script src="~/admin-app/controllers/staking/index.js" asp-append-version="true"></script>
+    <script>
+        var stakingController = new StakingController();
+        stakingController.initialize();
+    </script>
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+                    <div class="card">
+                        <div class="card-header pt-5">
+                            <h4 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold text-gray-800">Package Listing</span>
+                            </h4>
+                            <div class="card-toolbar">
+                                <div class="d-flex flex-stack flex-wrap ms-2">
+                                    <a href="/admin/staking/leaderboard" class="text-gray-600">View Leaderboard</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                    <thead>
+                                        <tr class="fw-bolder text-muted">
+                                            <th class="min-w-125px">Package</th>
+                                            <th class="min-w-125px">Price</th>
+                                            <th class="min-w-90px">Interest Rate</th>
+                                            <th class="">Profit</th>
+                                            <th class="">Disbursement</th>
+                                            <th class="">Maxout</th>
+                                            <th class="min-w-125px">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-01.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package1000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package1000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">8 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package1000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-02.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package2000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package2000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">8 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package2000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-03.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package5000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package5000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">8 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package5000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-04.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package10000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package10000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">10 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package10000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-05.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package20000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package20000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">10 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package20000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-06.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package50000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package50000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">10 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package50000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-07.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package100000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package100000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">12 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package100000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-08.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package200000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package200000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">12 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package200000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-09.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package500000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package500000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">12 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package500000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/packgae/package-10.webp" width="70" />
+                                                    <div class="ms-2">
+                                                        <span class="fw-bold text-dark d-block fs-6">@StakingPackage.Package1000000.GetDescription()</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">@((int)StakingPackage.Package1000000) <span class="text-muted">@CommonConstants.TOKEN_OUT_CODE</span></span>
+                                            </td>
+                                            <td>
+                                                <span class="fw-bold d-block fs-7">12 %<span class="text-muted">/Month</span></span>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">@((int)StakingTimeLine.TwelveMonth) <span class="text-muted">Months</span></div>
+                                            </td>
+                                            <td>
+                                                <div class="fw-bold d-block fs-7">300 <span class="text-muted">%</span></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-package="@((int)StakingPackage.Package1000000)"
+                                                   class="btn btn-sm btn-light-dark btn-active-color-primary btnStaking">
+                                                    Staking
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div class="container" id="kt_content_container">
+            <form class="form w-100">
+                @Html.AntiForgeryToken()
+                <div class="card" id="kt_pricing">
+                    <div class="card-body p-lg-10">
+                        <div class="d-flex flex-column">
+                            <div class="mb-13 text-center">
+                                <h1 class="fs-2x fw-bolder mb-5 text-warning">Choose Your Mining Capacity</h1>
+                                <div class="text-gray-700 fw-bold fs-5">
+                                    If you need more info about DGB token pricing, please check
+                                    <a href="/admin/exchange/index" class="link-white fw-bolder">Exchange</a>.
+                                </div>
+                            </div>
+                            <div class="row g-10">
+                                <div class="col-xl-3">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <div class="w-100 d-flex flex-column flex-center rounded-3 bg-light bg-opacity-75 ">
+                                            <img src="~/images/packagemining1.jpg" width="100%" style="border-radius:10px 10px 0 0" />
+                                            <div class="w-100 py-7 px-5 pt-3">
+                                                <div class="text-center">
+                                                    <h2 class="text-dark mb-0 fw-boldest text-uppercase">Basic</h2>
+                                                    <div class="text-center">
+                                                        <span class="fs-2x fw-bolder text-primary">2,000</span>
+                                                        <span class="mb-2 text-white-50 fw-bolder">DGB</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-5">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <span class="fw-bold fs-6 text-gray-800 flex-grow-1 pe-3">Time Profit</span>
+                                                        <span class="svg-icon svg-icon-1 svg-icon-success fw-bold">
+                                                            24 Months
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <span class="fw-bold fs-6 text-gray-800 flex-grow-1 pe-3">Time Mining</span>
+                                                        <span class="svg-icon svg-icon-1 svg-icon-success fw-bold">
+                                                            24 Months
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <span class="fw-bold fs-6 text-gray-800 flex-grow-1 pe-3">Mining Capacity</span>
+                                                        <span class="svg-icon svg-icon-1 svg-icon-success fw-bold text-warning">
+                                                            8%/Month
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <span class="fw-bold fs-6 text-gray-800 flex-grow-1 pe-3">Maxout</span>
+                                                        <span class="svg-icon svg-icon-1 svg-icon-success fw-bold text-success">
+                                                            300%
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="w-100 text-center">
+                                                    <a href="#" class="btn btn-large btn-warning fw-bolder btnStaking"
+                                                       data-package="@((int)StakingPackage.Package2000)">Mining</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>*@

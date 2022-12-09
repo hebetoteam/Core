@@ -1,0 +1,217 @@
+﻿@model HomeViewModel
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@section Styles{
+
+}
+
+@section Scripts{
+
+    @*<script src="~/lib/signalr/signalr.min.js"></script>
+
+        <script>
+
+            //let connection = new signalR.HubConnection("/hubs/lucky", { transport: signalR.TransportType.LongPolling });
+            var connection = new signalR.HubConnectionBuilder().withUrl("/hubs/lucky").build();
+
+            connection.on('luckyMembers', data => {
+
+                var div = $("#luckyMembers");
+
+                const luckies = JSON.parse(data);
+
+                var i;
+                console.log()
+                //debugger;
+
+                var htmlStr = "";
+
+                for (i = 0; i < luckies.length; ++i) {
+                    htmlStr += luckies[i];
+                }
+
+                console.log(htmlStr);
+
+                div.html(htmlStr);
+            });
+
+            connection.start().then(() => connection.invoke('send', 'Hello'));
+        </script>*@
+
+    <script src="~/admin-app/controllers/home/index.js"></script>
+    <script>
+        var homeObj = new HomeController();
+        homeObj.initialize();
+    </script>
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="tradingview-widget-container mb-5">
+                <div class="tradingview-widget-container__widget" id="ticker-tape">
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-4 mb-10 mb-xl-10">
+                    @await Html.PartialAsync("_ChartTokenPricePartial")
+                </div>
+                <div class="col-xl-8 mb-10 mb-xl-10">
+                    @await Html.PartialAsync("_AirdropPartial")
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-5 mb-10 mb-xl-10">
+                    @await Html.PartialAsync("_RoadmapPartial")
+                </div>
+                <div class="col-xl-7 mb-10 mb-xl-10">
+                    @await Html.PartialAsync("_TokenNomicsPartial")
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-6 mb-5 mb-xl-5">
+                    @await Html.PartialAsync("_TeamPartial")
+                </div>
+                <div class="col-xl-6 mb-5 mb-xl-5">
+                    @await Html.PartialAsync("_StakingLeaderBoardPartial")
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-5">
+                    @await Html.PartialAsync("_InvestProfitHistoryPartial")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <div class="post d-flex flex-column-fluid" id="kt_post">
+            <div class="container-xxl" id="kt_content_container">
+
+                <div class="row gy-5 g-xl-8">
+                    <div class="col-xl-12">
+                        <div class="card mb-10 mt-5 mb-xl-20">
+                            <h1 class="d-flex flex-column text-dark fw-bolder mt-20 fs-2">MetaDeFi Ecosystem</h1>
+                            <div id="divBody" class="opening hide-UI view-2D zoom-large data-close controls-close">
+                                <div id="data">
+                                    <a class="mercury" title="AI" href="#ai">AI</a>
+                                    <a class="venus" title="NFT" href="#nft">NFT</a>
+                                    <a class="earth active" title="Game" href="#game">Game</a>
+                                    <a class="mars" title="Swap" href="#swap">Swap</a>
+                                    <a class="jupiter" title="Staking" href="#staking">Staking</a>
+                                    <a class="saturn" title="Farming" href="#farming">Farming</a>
+                                    <a class="uranus" title="DeFi" href="#defi">DeFi</a>
+                                    <a class="neptune" title="Exchange" href="#exchange">Exchange</a>
+                                </div>
+                                <div id="universe" class="scale-stretched">
+                                    <div id="galaxy">
+                                        <div id="solar-system" class="earth">
+                                            <div id="mercury" class="orbit">
+                                                <div class="pos">
+                                                    <div class="planet">
+                                                        <dl class="infos">
+                                                            <dt>AI</dt>
+                                                            <dd><span>Ecosystem</span></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="venus" class="orbit">
+                                                <div class="pos">
+                                                    <div class="planet">
+                                                        <dl class="infos">
+                                                            <dt>NFT</dt>
+                                                            <dd><span>Ecosystem</span></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="earth" class="orbit">
+                                                <div class="pos">
+                                                    <div class="orbit">
+                                                        <div class="pos">
+                                                            <div class="moon"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="planet">
+                                                        <dl class="infos">
+                                                            <dt>Game</dt>
+                                                            <dd>
+                                                                <span>Ecosystem</span>
+                                                            </dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="mars" class="orbit">
+                                                <div class="pos">
+                                                    <div class="planet">
+                                                        <dl class="infos">
+                                                            <dt>Swap</dt>
+                                                            <dd><span>Ecosystem</span></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="jupiter" class="orbit">
+                                                <div class="pos">
+                                                    <div class="planet">
+                                                        <dl class="infos">
+                                                            <dt>Staking</dt>
+                                                            <dd><span>Ecosystem</span></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="saturn" class="orbit">
+                                                <div class="pos">
+                                                    <div class="planet">
+                                                        <div class="ring"></div>
+                                                        <dl class="infos">
+                                                            <dt>Farming</dt>
+                                                            <dd><span>Ecosystem</span></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="uranus" class="orbit">
+                                                <div class="pos">
+                                                    <div class="planet">
+                                                        <dl class="infos">
+                                                            <dt>DeFi</dt>
+                                                            <dd><span>Ecosystem</span></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="neptune" class="orbit">
+                                                <div class="pos">
+                                                    <div class="planet">
+                                                        <dl class="infos">
+                                                            <dt>Exchange</dt>
+                                                            <dd><span>Ecosystem</span></dd>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="sun">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@

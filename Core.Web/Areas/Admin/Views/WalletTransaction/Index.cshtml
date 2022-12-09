@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Wallet Transaction";
+}
+
+@section Styles{
+    <link href="~/admin-app/controllers/wallet-transaction/index.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts{
+    <script src="~/admin-app/controllers/wallet-transaction/index.js"></script>
+    <script>
+        var walletTransaction = new WalletTransactionController();
+        walletTransaction.initialize();
+    </script>
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+                    <div class="card">
+                        <div class="card-header pt-5">
+                            <div class="card-toolbar">
+                                <div class="d-flex flex-stack flex-wrap gap-4">
+                                    <div class="d-flex align-items-center fw-bold">
+                                        @Html.DropDownList("WalletTransactionType", null, "Select transaction type", new { @class = "form-select form-select-sm form-select-solid" })
+                                    </div>
+
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <input type="text" id="Sale_Report_Customer_Search" class="form-control form-control-white form-control-sm" placeholder="Search">
+                                    </div>
+                                    
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <button type="button" id="btnSaleReport" class="btn btn-sm btn-success">
+                                            <span class="indicator-label">Search</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                    <thead>
+                                        <tr class="fw-bolder text-muted">
+                                            <th class="min-w-90px">
+                                                <span class="d-block">Sponsor</span>
+                                                <span class="d-block">Email</span>
+                                            </th>
+                                            <th class="min-w-100px">
+                                                <span class="d-block">Type</span>
+                                            </th>
+                                            <th class="min-w-125px">Amount</th>
+                                            <th class="min-w-90px">
+                                                <span class="d-block">Fee</span>
+                                                <span class="d-block">Fee Amount</span>
+                                            </th>
+                                            <th class="min-w-125px">Amount Receive</th>
+                                            <th class="">
+                                                <span class="d-block">Address From</span>
+                                                <span class="d-block">Address To</span>
+                                            </th>
+                                            <th class="">
+                                                <span class="d-block">Created Date</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbl-content"></tbody>
+                                </table>
+                            </div>
+                            @await Component.InvokeAsync("Paging")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>
+            <span class="fw-bold text-gray-700 d-block fs-7">{{Sponsor}}</span>
+            <span class="fw-bold text-dark d-block fs-7">{{UserName}}</span>
+        </td>
+        <td>
+            <span class="badge badge-light-warning d-block">{{TypeName}}</span>
+        </td>
+        <td>
+            <span class="fw-bold text-dark d-block fs-7">{{Amount}} <span class="text-gray-700 fs-8">{{UnitName}}</span></span>
+        </td>
+        <td>
+            <span class="fw-bold d-block fs-7">{{Fee}}%</span>
+            <span class="fw-bold text-dark d-block fs-7">{{FeeAmount}} <span class="text-gray-700 fs-8">{{UnitName}}</span></span>
+        </td>
+        <td>
+            <span class="fw-bold text-dark d-block fs-7">{{AmountReceive}} <span class="text-gray-700 fs-8">{{UnitName}}</span></span>
+        </td>
+        <td>
+            <span class="fw-bold text-gray-700 d-block fs-7">{{AddressFrom}}</span>
+            <span class="fw-bold text-gray-700 d-block fs-7">{{AddressTo}}</span>
+        </td>
+        <td>
+            <span class="fw-bold text-muted d-block fs-7">{{DateCreated}}</span>
+        </td>
+    </tr>
+</script>

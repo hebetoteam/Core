@@ -1,0 +1,62 @@
+﻿@using Core.Utilities.Constants
+
+@{
+    ViewBag.Title = "Affiliate";
+}
+
+@section Styles{
+    <link href="~/admin-app/controllers/staking/affiliate.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts{
+    <script src="~/admin-app/controllers/staking/affiliate.js" asp-append-version="true"></script>
+    <script>
+        var affiliateController = new AffiliateController();
+        affiliateController.initialize();
+    </script>
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                    <thead>
+                                        <tr class="fw-bolder text-muted">
+                                            <th class="min-w-100px">Amount</th>
+                                            <th class="min-w-150px">Create Date</th>
+                                            <th class="min-w-300px">Remarks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbl-content"></tbody>
+                                </table>
+                            </div>
+                            @await Component.InvokeAsync("Paging")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <td>
+            <span class="text-dark fw-bolder d-block fs-7">{{Amount}} <span class="text-gray-700">HBT</span></span>
+        </td>
+        <td>
+            <span class="text-gray-700 fw-bolder d-block fs-7">{{DateCreated}}</span>
+        </td>
+        <td>
+            <span class="text-gray-700 d-block fs-7">{{Remarks}}</span>
+        </td>
+    </tr>
+</script>

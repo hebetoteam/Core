@@ -1,0 +1,99 @@
+﻿@section Styles{
+
+}
+
+@section Scripts{
+
+}
+
+<div class="card">
+    <div class="card-header pt-5">
+        <h4 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bold">Saving Leaderboard</span>
+            <span class="text-gray-400 mt-1 fw-semibold fs-6">Latest leaderboard list</span>
+        </h4>
+        <div class="card-toolbar">
+            <div class="d-flex flex-stack flex-wrap gap-4">
+                <a href="/admin/saving/leaderboard" class="text-gray-600">View All</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                <thead>
+                    <tr class="fw-bolder text-muted">
+                        <th class="min-w-100px">
+                            <span class="d-block">Sponsor</span>
+                        </th>
+                        <th class="min-w-175px">Coin</th>
+                        <th class="min-w-150px">
+                            <span class="d-block">Amount Coin</span>
+                            <span class="d-block">Amount Receive</span>
+                        </th>
+                        <th class="min-w-90px">Duration</th>
+                        <th class="">
+                            <span class="d-block">Interest Rate</span>
+                        </th>
+                        <th class="">
+                            <span class="d-block">Expected Interest</span>
+                        </th>
+                        <th class="">
+                            <span class="d-block">Created Date</span>
+                        </th>
+                        <th>
+                            <span class="d-block">Value Date</span>
+                            <span class="d-block">Redemption Date</span>
+                        </th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tbl-content-saving"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<script id="table-template-saving" type="x-tmpl-mustache">
+    <tr>
+        <td>
+            <span class="fw-bold text-gray-700 d-block fs-7">{{Sponsor}}</span>
+        </td>
+        <td>
+            <div class="d-flex">
+                <img src="{{TokenImage}}" width="35"/>
+                <div class="ms-2">
+                    <span class="fw-bold text-gray-600 d-block fs-7">{{TokenCode}}</span>
+                    <span class="fw-bold text-dark d-block fs-7">{{TokenName}}</span>
+                </div>
+            </div>
+        </td>
+        <td>
+            <span class="fw-bold d-block fs-7">{{SavingAmount}}</span>
+            <span class="fw-bold text-gray-700 d-block fs-7">${{USDAmount}}</span>
+        </td>
+        <td>
+            <span class="fw-bold d-block fs-7">{{TimeLine}} <span class="text-gray-600">days</span></span>
+
+        </td>
+        <td>
+            <span class="fw-bold d-block fs-7">{{InterestRate}}%<span class="text-gray-600">/day</span></span>
+        </td>
+        <td>
+            <span class="fw-bold text-dark d-block fs-7">${{ExpectedInterest}}</span>
+        </td>
+        <td>
+            <span class="fw-bold text-gray-800 d-block fs-7">{{SavingDate}}</span>
+        </td>
+        <td>
+            <span class="fw-bold text-gray-600 d-block fs-7">{{ValueDate}}</span>
+            <span class="fw-bold text-gray-600 d-block fs-7">{{EndDate}}</span>
+        </td>
+        <td>
+            <span class="fw-bold text-gray-600 d-block fs-7">{{Status}}</span>
+        </td>
+    </tr>
+</script>

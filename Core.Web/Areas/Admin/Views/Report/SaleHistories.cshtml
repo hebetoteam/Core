@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Report";
+
+    var isAdmin = User.IsInRole("Admin");
+}
+@section Scripts{
+    <script src="~/admin-app/controllers/report/sale_transaction.js" asp-append-version="true"></script>
+    <script>
+        var reportObj = new ReportController();
+        reportObj.initialize();
+    </script>
+}
+
+@section Styles{
+    <link href="~/admin-app/controllers/report/index.css" rel="stylesheet" asp-append-version="true" />
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+                    <div class="card">
+                        <div class="card-header pt-5">
+                            <div class="card-toolbar">
+                                <div class="d-flex flex-stack flex-wrap gap-4">
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <input type="text" id="username" class="form-control form-control-white form-control-sm me-5" placeholder="Username">
+                                    </div>
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <input type="text" id="FromDate" class="form-control form-control-white form-control-sm me-5" placeholder="From">
+                                    </div>
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <input type="text" id="ToDate" class="form-control form-control-white form-control-sm me-5" placeholder="To">
+                                    </div>
+                                    <div class="d-flex align-items-center fw-bold">
+                                        <a id="btnSearch" class="btn btn-sm btn-icon btn-light btn-color-muted btn-active-success me-3">
+                                            <span class="svg-icon svg-icon-2 svg-icon-success">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21.7 18.9L18.6 15.8C17.9 16.9 16.9 17.9 15.8 18.6L18.9 21.7C19.3 22.1 19.9 22.1 20.3 21.7L21.7 20.3C22.1 19.9 22.1 19.3 21.7 18.9Z" fill="black"></path><path opacity="0.3" d="M11 20C6 20 2 16 2 11C2 6 6 2 11 2C16 2 20 6 20 11C20 16 16 20 11 20ZM11 4C7.1 4 4 7.1 4 11C4 14.9 7.1 18 11 18C14.9 18 18 14.9 18 11C18 7.1 14.9 4 11 4ZM8 11C8 9.3 9.3 8 11 8C11.6 8 12 7.6 12 7C12 6.4 11.6 6 11 6C8.2 6 6 8.2 6 11C6 11.6 6.4 12 7 12C7.6 12 8 11.6 8 11Z" fill="black"></path></svg>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex flex-wrap flex-sm-nowrap">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex flex-wrap justify-content-start">
+                                        <div class="d-flex flex-wrap">
+                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-primary me-2">
+                                                        <i class="fa fa-users text-primary"></i>
+                                                    </span>
+                                                    <div class="fs-6 fw-bolder TotalMember">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-6 text-gray-400">Total Referral</div>
+                                            </div>
+                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-primary me-2">
+                                                        <i class="fa fa-money-check text-warning"></i>
+                                                    </span>
+                                                    <div class="fs-6 fw-bolder totalSaving">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-6 text-gray-400">Total Saving (USDT)</div>
+                                            </div>
+                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-success me-2">
+                                                        <i class="fa fa-money-check text-success"></i>
+                                                    </span>
+                                                    <div class="fs-6 fw-bolder totalBNBDeposit">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-6 text-gray-400">Total Deposit BNB</div>
+                                            </div>
+                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-danger me-2">
+                                                        <i class="fa fa-money-check text-danger"></i>
+                                                    </span>
+                                                    <div class="fs-6 fw-bolder totalBNBWithdraw">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-6 text-gray-400">Total Withdraw BNB</div>
+                                            </div>
+                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-success me-2">
+                                                        <i class="fa fa-money-check text-success"></i>
+                                                    </span>
+                                                    <div class="fs-6 fw-bolder totalUSDTDeposit">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-6 text-gray-400">Total Deposit USDT</div>
+                                            </div>
+                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-danger me-2">
+                                                        <i class="fa fa-money-check text-danger"></i>
+                                                    </span>
+                                                    <div class="fs-6 fw-bolder totalUSDTWithdraw">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-6 text-gray-400">Total Withdraw USDT</div>
+                                            </div>
+
+                                            
+
+                                           
+
+                                            <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-3 mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <span class="svg-icon svg-icon-3 svg-icon-danger me-2">
+                                                        <i class="fa fa-money-check text-danger"></i>
+                                                    </span>
+                                                    <div class="fs-6 fw-bolder totalExchangeSaleUSDT">0</div>
+                                                </div>
+                                                <div class="fw-bold fs-6 text-gray-400">Total Exchange in USDT</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

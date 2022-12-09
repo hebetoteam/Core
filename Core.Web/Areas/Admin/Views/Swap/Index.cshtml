@@ -1,0 +1,91 @@
+﻿@using Core.Data.Enums
+@using Core.Utilities.Extensions
+
+@{
+    ViewBag.Title = "Swap";
+}
+
+@section Styles{
+
+}
+
+@section Scripts{
+    <script src="~/admin-app/controllers/swap/index.js"></script>
+
+    <script>
+        var swapObj = new SwapController();
+        swapObj.initialize();
+    </script>
+}
+
+<input hidden id="Enabled2FA" value="@((bool)ViewBag.Enabled2FA)" />
+<input hidden id="be-hidden-2faCode" />
+<input hidden id="be-hidden-password" />
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="d-flex flex-column flex-lg-row">
+                <div class="d-flex flex-center flex-column flex-lg-row-auto w-100 mb-8 mb-lg-0">
+                    <div class="w-100 w-lg-450px w-xxl-450px mb-8 mb-lg-0">
+                        @Html.AntiForgeryToken()
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-5 text-center">
+                                    <label class="fs-5 form-label fw-bold text-dark">
+                                       Swap @(CommonConstants.TOKEN_OUT_CODE)
+                                    </label>
+                                    <h6 class="text-primary">Minimum swap <span class="lblMinSwap">0</span> @(CommonConstants.TOKEN_OUT_CODE)</h6>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="fs-6 fw-semibold text-gray-700">
+                                        Balance: <span class="fw-bold text-gray-800" id="txtBalance">0.0000</span> @(CommonConstants.TOKEN_OUT_CODE)
+                                    </label>
+                                </div>
+
+                                <div class="mb-5">
+                                    <label class="fs-6 fw-semibold form-label text-gray-700">Swap Amount</label>
+
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control form-control-solid border-0 numberFormat4"
+                                               value="0.00" id="txtAmount">
+                                        <button type="button" class="btn btn-icon
+                                                    btn-active-color-gray-700 position-absolute
+                                                    translate-middle-y top-50 end-0 btnMax">
+                                            Max
+                                        </button>
+                                    </div>
+
+                                    <span class="form-label fs-7 mt-1 text-danger lblErrorInsufficient"></span>
+                                </div>
+
+                                <div class="mb-5">
+                                    <div class="d-flex flex-stack">
+                                        <label class="fs-6 fw-semibold text-gray-700">Fee Amount</label>
+                                        <label class="text-gray-700 fw-bold" id="txtFeeAmount">0.00</label>
+                                    </div>
+                                </div>
+
+                                <div class="mb-10">
+                                    <div class="d-flex flex-stack mb-5">
+                                        <label class="fs-6 fw-semibold text-gray-700">Receive Amount</label>
+                                        <label class="text-gray-700 fw-bold" id="txtAmountReceive">0.00</label>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a href="/admin/home/index" class="btn btn-active-light-warning btn-color-gray-600 me-3">Cancel</a>
+                                    <button class="btn btn-primary" id="btnConfirmSwap">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

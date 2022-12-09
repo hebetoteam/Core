@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "Bot Trade";
+}
+
+@section Styles{
+    <link href="~/admin-app/shared/gaugejs/assets/prettify.css" rel="stylesheet" />
+    <link href="~/admin-app/controllers/investtrading/index.css" rel="stylesheet" asp-append-version="true" />
+}
+
+@section Scripts{
+    <script src="~/admin-app/controllers/investtrading/index.js" asp-append-version="true"></script>
+
+    <script>
+        var investTradingController = new InvestTradingController();
+        investTradingController.RegisterChartInterval(@((int)ViewBag.ChartInterval))
+        investTradingController.initialize();
+    </script>
+}
+
+<div class="d-flex flex-column flex-column-fluid">
+
+    @await Html.PartialAsync("_ToolbarPartial")
+
+    <div id="kt_app_content" class="app-content flex-column-fluid pt-6 pt-lg-10">
+        <div id="kt_app_content_container" class="app-container container-xxl">
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+
+                    <div class="tradingview-widget-container">
+                        <div id="tradingview_366ae" style="height:500px"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                            new TradingView.widget(
+                                {
+                                    "autosize": true,
+                                    //"width": 980,
+                                    //"height": 610,
+                                    "symbol": "COINBASE:BTCUSD",
+                                    "timezone": "Etc/UTC",
+                                    "theme": "dark",
+                                    "style": "1",
+                                    "locale": "en",
+                                    "toolbar_bg": "#f1f3f6",
+                                    //"enable_publishing": true,
+                                    "withdateranges": true,
+                                    "range": "1D",
+                                    "hide_side_toolbar": false,
+                                    "allow_symbol_change": true,
+                                    "details": true,
+                                    "hotlist": true,
+                                    "calendar": true,
+                                    "studies": [
+                                        //"ACCD@tv-basicstudies",
+                                        //"studyADR@tv-basicstudies",
+                                        //"AROON@tv-basicstudies",
+                                        //"ATR@tv-basicstudies",
+                                        //"BB@tv-basicstudies",
+                                        "Volume@tv-basicstudies"
+                                    ],
+                                    "show_popup_button": true,
+                                    "popup_width": "1000",
+                                    "popup_height": "650",
+                                    "container_id": "tradingview_366ae"
+                                }
+                            );
+                        </script>
+                    </div>
+
+                    <div class="infoBotTrade">
+                        <div class="row_2">
+                            <span class="lbllost">LOST</span>
+                            <span id="infoBotTrade_lots">Loading...</span>
+                            <span id="infoBotTrade_profit" class="win">Loading...</span>
+                            <span class="lblprofit">PROFIT</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row gx-5 gx-xl-10">
+                <div class="col-xl-12 mb-5 mb-xl-10">
+
+                    <div class="card">
+                        <div class="card-header pt-5">
+                            <h4 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bold">Trade History</span>
+                                <span class="text-gray-400 mt-1 fw-semibold fs-6">Bot Trade Profit</span>
+                            </h4>
+                            <div class="card-toolbar">
+                                <div class="d-flex flex-stack flex-wrap gap-4">
+                                    <a href="/admin/investtrading/index" class="text-gray-600">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                                    <thead>
+                                        <tr class="fw-bolder text-muted">
+                                            <th>Start Price</th>
+                                            <th>Stop Price</th>
+                                            <th>Type</th>
+                                            <th>Margin</th>
+                                            <th>Profit Amount</th>
+                                            <th>Profit Percent</th>
+                                            <th>Result</th>
+                                            <th>Date Created</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbl-content"></tbody>
+                                </table>
+                            </div>
+                            @await Component.InvokeAsync("Paging")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+        <tr>
+            <td><span class="fw-bold text-dark d-block fs-7">{{StartPrice}} <span class="text-gray-700 fs-8">BTC/USD</span></span></td>
+            <td><span class="fw-bold text-dark d-block fs-7">{{StopPrice}} <span class="text-gray-700 fs-8">BTC/USD</span></span></td>
+            <td><span class="fw-bold {{TypeColor}} d-block fs-7">{{TypeName}}</span></td>
+            <td><span class="fw-bold text-dark d-block fs-7">{{Margin}}</span></td>
+            <td><span class="fw-bold text-dark d-block fs-7"><span class="text-gray-700 fs-8">$</span>{{ProfitAmount}}</span></td>
+            <td><span class="fw-bold text-dark d-block fs-7">{{ProfitPercent}}<span class="text-gray-700 fs-8">%</span></span></td>
+            <td><span class="fw-bold {{ResultColor}} d-block fs-7">{{Result}}</span></td>
+            <td><span class="fw-bold text-gray-600 d-block fs-7">{{DateCreated}}</span></td>
+        </tr>
+</script>
